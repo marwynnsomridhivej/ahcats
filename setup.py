@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name = "ahcats",
     packages = ['ahcats'],
-    version = "1.0.0",
+    version = "0.1.0",
     license = "MIT",
     description = "An async ready wrapper for the HTTP Cat API",
     author = "Marwynn Somridhivej",
@@ -11,7 +11,7 @@ setup(
     url = "https://github.com/marwynnsomridhivej/ahcats",
     download_url = "",
     keywords = ['wrapper', 'api', 'cat', 'http', 'async'],
-    install_requires = ['aiohttp'],
+    install_requires = ['aiohttp', 'asyncstdlib'],
     classifiers = [
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",

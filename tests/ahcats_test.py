@@ -1,7 +1,10 @@
 import asyncio
 import os
+import sys
 
+sys.path.append("../ahcats")
 from ahcats import Client, utils
+
 
 try:
     import uvloop

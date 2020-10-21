@@ -42,4 +42,4 @@ if not os.path.exists("./images"):
 for formats in utils.VALID_FORMATS:
     for code in CODES:
         loop.run_until_complete(test(f"https://http.cat/{code}.jpg", code, formats))
-os.remove("./images")
+os.removedirs("./images")

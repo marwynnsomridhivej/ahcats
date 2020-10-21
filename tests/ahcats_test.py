@@ -5,7 +5,7 @@ import sys
 from contextlib import suppress
 
 sys.path.append("../ahcats")
-from ahcats import Client, utils
+from ahcats import Client, utils, errors
 
 try:
     import uvloop
@@ -35,7 +35,10 @@ async def test(url: str, error_code: int, image_format: str):
     print(image.url, image.error_code)
     assert image.url == url
     assert image.error_code == error_code
-    image.save(f"./images/{error_code}.{image_format.replace('jpeg 2000', 'jp2')}", fileformat=image_format)
+    try:
+        image.save(f"./images/{error_code}.{image_format.replace('jpeg 2000', 'jp2')}", fileformat=image_format)
+    except errors.AHCatsException:
+        pass
 
 ahclient = Client(default_format="jpg")
 if not os.path.exists("./images"):

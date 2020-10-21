@@ -1,10 +1,11 @@
+from ahcats import Client, utils
 import asyncio
 import os
+import shutil
 import sys
+from contextlib import suppress
 
 sys.path.append("../ahcats")
-from ahcats import Client, utils
-
 
 try:
     import uvloop
@@ -42,4 +43,5 @@ if not os.path.exists("./images"):
 for formats in utils.VALID_FORMATS:
     for code in CODES:
         loop.run_until_complete(test(f"https://http.cat/{code}.jpg", code, formats))
-os.removedirs("./images")
+with suppress(Exception):
+    shutil.rmtree("./images")

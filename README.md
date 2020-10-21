@@ -17,16 +17,22 @@ You can also install directly from source by entering either one of these in you
 - `python -m pip install -U git+https://github.com/marwynnsomridhivej/ahcats`
 
 ## Usage
-If you want more detailed examples, please check out the examples in the examples directory.
+If you want more detailed examples, please check out the examples in the examples directory *(coming soon)*
 ```python
 import ahcats
+import os
 
-ahclient = ahcats.Client(default_format="png")
+ahclient = ahcats.Client(default_format="jpg")
 error_code = 404
-image = await ahclient.get_image(error_code, format="png")
+image = await ahclient.get_image(error_code)
 print(image.url)
+
+if not os.path.exists("./images"):
+    os.makedirs("./images")
+image.save("./images/images.jpg", fileformat="jpg")
 ```
 **Output:**
 ```
-http.cat/404.png
+http.cat/404.jpg
 ```
+<img src="./404.jpg" alt="HTTP Cat 404 JPEG" width="30%">

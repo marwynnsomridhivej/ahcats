@@ -1,4 +1,3 @@
-from ahcats import Client, utils
 import asyncio
 import os
 import shutil
@@ -6,6 +5,7 @@ import sys
 from contextlib import suppress
 
 sys.path.append("../ahcats")
+from ahcats import Client, utils
 
 try:
     import uvloop

@@ -1,18 +1,22 @@
-from distutils.core import setup
+import setuptools
 
-setup(
-    name = "ahcats",
-    packages = ['ahcats'],
-    version = "0.1.0",
-    license = "MIT",
-    description = "An async ready wrapper for the HTTP Cat API",
-    author = "Marwynn Somridhivej",
-    author_email = "msomridhivej329@gmail.com",
-    url = "https://github.com/marwynnsomridhivej/ahcats",
-    download_url = "",
-    keywords = ['wrapper', 'api', 'cat', 'http', 'async'],
-    install_requires = ['aiohttp', 'asyncstdlib'],
-    classifiers = [
+with open("./README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="ahcats",
+    packages=['ahcats'],
+    version="0.1.0",
+    license="MIT",
+    description="An async ready wrapper for the HTTP Cat API",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    author="Marwynn Somridhivej",
+    author_email="msomridhivej329@gmail.com",
+    url="https://github.com/marwynnsomridhivej/ahcats",
+    keywords=['wrapper', 'api', 'cat', 'http', 'async'],
+    install_requires=['aiohttp', 'asyncstdlib'],
+    classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Build Tools",

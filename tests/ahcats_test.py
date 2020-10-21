@@ -32,7 +32,6 @@ CODES = [
 
 async def test(url: str, error_code: int, image_format: str):
     image = await ahclient.get_image(error_code)
-    print(image.url, image.error_code)
     assert image.url == url
     assert image.error_code == error_code
     try:

@@ -1,21 +1,17 @@
-import setuptools
+from setuptools import setup, find_packages
 
 with open("./README.md", "r") as fh:
     long_description = fh.read()
 
-setuptools.setup(
+setup(
     name="ahcats",
-    packages=['ahcats'],
     version="0.1.0",
-    license="MIT",
     description="An async ready wrapper for the HTTP Cat API",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Marwynn Somridhivej",
     author_email="msomridhivej329@gmail.com",
     url="https://github.com/marwynnsomridhivej/ahcats",
-    keywords=['wrapper', 'api', 'cat', 'http', 'async'],
-    install_requires=['aiohttp', 'asyncstdlib'],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
@@ -28,4 +24,13 @@ setuptools.setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
+    keywords='wrapper, api, cat, http, async',
+    package_dir={"": "ahcats"},
+    packages=find_packages(where='ahcats'),
+    python_requires=">=3.0, <4",
+    install_requires=['aiohttp', 'asyncstdlib'],
+    extras_require={
+        "pil": ['pillow'],
+        "test": ['pytest-asyncio', 'pytest']
+    },
 )

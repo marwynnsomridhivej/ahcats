@@ -4,8 +4,10 @@ import shutil
 import sys
 from contextlib import suppress
 
+import pytest
+
 sys.path.append("../ahcats")
-from ahcats import Client, utils, errors
+from ahcats import Client, errors, utils
 
 try:
     import uvloop
@@ -29,9 +31,8 @@ CODES = [
     599,
 ]
 
-
-async def test(url: str, error_code: int, image_format: str):
-    image = await ahclient.get_image(error_code)
+def all_funcs(url: str, error_code: int, image_format: str):
+    image = loop.run_until_complete(ahclient.get_image(error_code))
     assert image.url == url
     assert image.error_code == error_code
     try:
@@ -40,10 +41,14 @@ async def test(url: str, error_code: int, image_format: str):
         pass
 
 ahclient = Client(default_format="jpg")
-if not os.path.exists("./images"):
-    os.makedirs("./images")
-for formats in utils.VALID_FORMATS:
-    for code in CODES:
-        loop.run_until_complete(test(f"https://http.cat/{code}.jpg", code, formats))
-with suppress(Exception):
-    shutil.rmtree("./images")
+
+def test():
+    if not os.path.exists("./images"):
+        os.makedirs("./images")
+    for formats in utils.VALID_FORMATS:
+        for code in CODES:
+            all_funcs(f"https://http.cat/{code}.jpg", code, formats)
+    with suppress(Exception):
+        shutil.rmtree("./images")
+
+test()

@@ -14,6 +14,7 @@ As with most repositories, you can install the package from the Python Package I
 
 To install `Pillow`, a module required to use the `save` and `show` image functions, you can enter this in your terminal:
 - `pip install -U ahcats[pil]`
+- `python -m pip install -U ahcats[pil]`
 
 You can also install directly from source by entering either one of these in your terminal:
 - `pip install -U git+https://github.com/marwynnsomridhivej/ahcats`
@@ -33,10 +34,10 @@ print(image.url)
 
 if not os.path.exists("./images"):
     os.makedirs("./images")
-image.save("./images/images.jpg", fileformat="jpg")
+image.save("./images/image.jpg", fileformat="jpg")
 ```
 **Output:**
 ```
 http.cat/404.jpg
 ```
-<img src="./404.jpg" alt="HTTP Cat 404 JPEG" width="30%">
+<img src="https://http.cat/404.jpg" alt="HTTP Cat 404 JPEG" width="30%">

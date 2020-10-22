@@ -1,3 +1,4 @@
+from os import error
 from typing import List
 
 
@@ -26,7 +27,7 @@ class HTTPError(AHCatsException):
     __slots__ = ['url', 'error_code']
 
     def __init__(self, url: str, error_code: int) -> None:
-        super().__init__(f"Request to {url} raised HTTP Error {str(error_code)}")
+        super().__init__("Request to %s raised HTTP Error %s" % (url, error_code))
         self.url = url
         self.error_code = error_code
 
@@ -41,8 +42,8 @@ class InvalidFormat(AHCatsException):
     __slots__ = ['fileformat']
 
     def __init__(self, fileformat: str) -> None:
-        super().__init__(f"The format \"{fileformat}\" is not a "
-                         "supported or valid image format")
+        super().__init__("The format \"%s\" is not a "
+                         "supported or valid image format" % (fileformat))
         self.fileformat = fileformat
 
 
@@ -58,5 +59,5 @@ class MissingDependency(AHCatsException):
 
     def __init__(self, dependencies: List[str]) -> None:
         super().__init__("You are missing the dependencies "
-                         f"{', '.join(dependencies)}, which this function requires")
+                         "%s, which this function requires" % (', '.join(dependencies)))
         self.dependencies = dependencies

@@ -21,7 +21,7 @@ class HTTPClient():
         """Internal function used to initiate an aiohttp ClientSession
         """
         self.session = aiohttp.ClientSession(headers={
-            'content-type': f'image/jpeg'
+            'content-type': 'image/jpeg'
         })
 
     def _get_url(self, error_code: int) -> str:
@@ -36,7 +36,7 @@ class HTTPClient():
         url = yarl.URL.build(
             scheme="https",
             host="http.cat/",
-            path=f"/{str(error_code)}.jpg"
+            path="/%s.jpg" % (error_code)
         )
         return str(url)
 

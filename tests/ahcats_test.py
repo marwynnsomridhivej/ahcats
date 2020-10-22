@@ -36,7 +36,7 @@ def all_funcs(url: str, error_code: int, image_format: str):
     assert image.url == url
     assert image.error_code == error_code
     try:
-        image.save(f"./images/{error_code}.{image_format.replace('jpeg 2000', 'jp2')}", fileformat=image_format)
+        image.save("./images/%s.%s" % (error_code, image_format.replace('jpeg 2000', 'jp2')), fileformat=image_format)
     except errors.AHCatsException:
         pass
 
@@ -47,7 +47,7 @@ def test():
         os.makedirs("./images")
     for formats in utils.VALID_FORMATS:
         for code in CODES:
-            all_funcs(f"https://http.cat/{code}.jpg", code, formats)
+            all_funcs("https://http.cat/%s.jpg" % (code), code, formats)
     with suppress(Exception):
         shutil.rmtree("./images")
 

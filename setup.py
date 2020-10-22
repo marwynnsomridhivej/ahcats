@@ -5,7 +5,7 @@ with open("./README.md", "r") as fh:
 
 setup(
     name="ahcats",
-    version="1.0.0-alpha.2",
+    version="1.0.2",
     description="An async ready wrapper for the HTTP Cat API",
     long_description=long_description,
     long_description_content_type="text/markdown",

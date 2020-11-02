@@ -5,7 +5,7 @@ with open("./README.md", "r") as fh:
 
 setup(
     name="ahcats",
-    version="1.0.2",
+    version="1.0.3",
     description="An async ready wrapper for the HTTP Cat API",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -23,8 +23,7 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     keywords='wrapper, api, cat, http, async',
-    package_dir={"": "ahcats"},
-    packages=find_packages(where='ahcats'),
+    packages=['ahcats'],
     python_requires=">=3.5.3, <4",
     install_requires=['aiohttp', 'asyncstdlib'],
     extras_require={

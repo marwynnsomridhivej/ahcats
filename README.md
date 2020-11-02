@@ -23,18 +23,28 @@ You can also install directly from source by entering either one of these in you
 ## Usage
 If you want more detailed examples, please check out the examples in the examples directory *(coming soon)*
 ```python
-# All new API requests are cached
-from ahcats import Client
+import asyncio
 import os
+
+
+from ahcats import Client
+
 
 ahclient = Client(default_format="jpg")
 error_code = 404
-image = await ahclient.get_image(error_code)
-print(image.url)
 
-if not os.path.exists("./images"):
-    os.makedirs("./images")
-image.save("./images/image.jpg", fileformat="jpg")
+
+async def main():
+    image = await ahclient.get_image(error_code)
+    print(image.url)
+    if not os.path.exists("./images"):
+        os.makedirs("./images")
+    image.save("./images/image.jpg", fileformat="jpeg")
+
+
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
 ```
 **Output:**
 ```

@@ -1,5 +1,4 @@
 import functools
-import inspect
 
 from .errors import MissingDependency
 

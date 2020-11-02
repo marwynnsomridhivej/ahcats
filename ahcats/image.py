@@ -66,16 +66,15 @@ class HCImage():
             raise ValueError("quality must be between 1 and 100")
         elif not is_path(fp):
             raise ValueError("fp must be a filename, pathlib.Path, or file object")
-        elif not fileformat.lower() in VALID_FORMATS:
-            raise InvalidFormat(fileformat)
 
         if self.format:
             fileformat = self.format.upper() if self.format.lower() != "jpg" else "JPEG"
+        elif fileformat.lower() == "jpg":
+            fileformat = "JPEG"
+        elif fileformat.lower() not in VALID_FORMATS:
+            raise InvalidFormat(fileformat)
         else:
-            if not fileformat.lower() in VALID_FORMATS or fileformat.lower() == "jpg":
-                fileformat = "JPEG"
-            else:
-                fileformat = fileformat.upper()
+            fileformat = fileformat.upper()
 
         image = Image.open(self.byteio, formats=["JPEG"])
         image.save(fp, fileformat, quality=quality)
